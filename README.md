@@ -142,14 +142,7 @@ Dan untuk ratu keempat dan terakhir:
 
 Dapat dilihat bahwa sudah ditemukan solusi pertama! Jika ingin menginstruksikan pemecahnya untuk berhenti setelah menemukan solusi pertama, itu akan berakhir di sini. Kalau tidak, itu akan mundur lagi dan menempatkan ratu pertama di baris ketiga kolom pertama.
 
-# 3. 8 Puzzle
-Source Code : [8puzzle.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20puzzle/8-puzzle.cpp)
-
-![8p](https://user-images.githubusercontent.com/52326074/77151801-52e60b00-6ac9-11ea-84f6-e27a66305731.png)
-
-8-puzzle adalah puzzle yang ditemukan dan dipopulerkan oleh Noyes Palmer Chapman pada tahun 1870-an. Ini dimainkan pada kotak 3-oleh-3 dengan 8 blok persegi berlabel 1 hingga 8 dan kotak kosong. Tujuan Anda adalah mengatur ulang blok agar sesuai. Anda diizinkan untuk menggeser blok secara horizontal atau vertikal ke dalam kotak kosong. Berikut ini menunjukkan urutan langkah hukum dari posisi dewan awal (kiri) ke posisi tujuan (kanan).
-
-# 4. 8 Puzzle - BFS (Breadth First Search)
+# 3. 8 Puzzle - BFS (Breadth First Search)
 Source Code : [8puzzle-bfs.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20puzzle%20bfs/8-puzzle_bfs.cpp)
 
 Solusi algoritmik untuk masalah yang menggambarkan metodologi kecerdasan buatan umum yang dikenal sebagai algoritma pencarian A*. Kami menetapkan kondisi permainan sebagai posisi papan, jumlah gerakan yang dilakukan untuk mencapai posisi papan, dan kondisi sebelumnya.
@@ -159,11 +152,17 @@ Pertama, masukkan status awal (papan awal, 0 bergerak, dan status nol sebelumnya
 - `Hamming Priority Function` Jumlah blok di posisi yang salah, ditambah jumlah gerakan yang dilakukan sejauh ini untuk sampai ke negara bagian. Secara intuitif, keadaan dengan sejumlah kecil blok di posisi yang salah dekat dengan keadaan sasaran, dan kami lebih suka keadaan yang telah dicapai menggunakan sejumlah kecil gerakan.
 - `Manhattan Priority Function` Jumlah jarak (jumlah jarak vertikal dan horizontal) dari blok ke posisi tujuan mereka, ditambah jumlah gerakan yang dibuat sejauh ini untuk sampai ke state.
 
-# 5. 8 Puzzle - DFS (Depth First Search)
+# 4. 8 Puzzle - DFS (Depth First Search)
 
-# 6. 8 Puzzle - IDS (Iterative Deepening Search)
+# 5. 8 Puzzle - IDS (Iterative Deepening Search)
 
-# 7. 8 Puzzle - Heuristic
+# 6. 8 Puzzle - Heuristic
+Source Code : [8puzzle-heuristic.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20puzzle%20heuristic/8-puzzle-heuristic.cpp)
+
+![8p](https://user-images.githubusercontent.com/52326074/77151801-52e60b00-6ac9-11ea-84f6-e27a66305731.png)
+
+8-puzzle adalah puzzle yang ditemukan dan dipopulerkan oleh Noyes Palmer Chapman pada tahun 1870-an. Ini dimainkan pada kotak 3-oleh-3 dengan 8 blok persegi berlabel 1 hingga 8 dan kotak kosong. Tujuan Anda adalah mengatur ulang blok agar sesuai. Anda diizinkan untuk menggeser blok secara horizontal atau vertikal ke dalam kotak kosong. Berikut ini menunjukkan urutan langkah hukum dari posisi dewan awal (kiri) ke posisi tujuan (kanan).
+
 8-Puzzle merupakan salah satu jenis permainan puzzle dimana kita harus mencapai goal puzzle dari initial puzzle yang diberikan. Untuk mencapai goal puzzle, 8-puzzle ini menyediakan satu grid kosong agar grid-grid lain disekitarnya dapat digerakkan. Sebagai contoh Inisial State dan Goal State dari sebuah puzzle adalah :
 
 ![8ph](https://user-images.githubusercontent.com/52326074/77028971-f9001b00-69cc-11ea-9301-6be95c8f1df1.PNG)
@@ -197,7 +196,7 @@ Initial State -> Right -> Up -> Right -> Down -> Down -> Left -> Up -> Right -> 
 
 Kesimpulannya, dari semua yang telah dipaparkan diatas, penggunaan dari dua fungsi heuristik Algoritma Greedy pada solusi penyelesaian 8-puzzle, baik fungsi heuristik pertama dan kedua sama sama mampu memberikan solusi penyelesaian dari awal state sampai ke goal state. Tetapi menurut pendapat saya, pada penggunaan fungsi heuristik pertama jumlah State puzzle yang memiliki fungsi heuristik yang sama lebih banyak dari pada penggunaan fungsi heuristik kedua. Jadi, penggunaan solusi dari fungsi heuristik kedua dalam contoh penyelesaian 8-puzzle diatas lebih optimal dari pada fungsi heuristik pertama.
 
-# 8. Minimax - Tic Tac Toe
+# 7. Minimax - Tic Tac Toe
 Source Code : [minimax-tictactoe.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/Minimax%20tictactoe/minimax.cpp)
 
 Tic Tac Toe merupakan permainan yang dimainkan oleh 2 pemain dengan menempatkan ‘buah’ yang berlainan untuk tiap pemain pada kotak 3 x 3. Penempatan ‘buah’ dilakukan secara bergantian sehingga salah satu pemain menjadi pemenang atau seluruh kotak terisi oleh ‘buah’. Salah satu pemain dikatakan menang jika dapat menempatkan ‘buah’ berjajar sebanyak 3 buah baik secara horisontal, vertikal atau diagonal.
@@ -267,4 +266,4 @@ Dari keadaan ini, graph minimax untuk Two-Ply Search dapat digambarkan sebagai b
 
 Dari diagram diatas, langkah terbaik yang dapat dilakukan oleh pemain pertama terdapat dua pilihan yaitu B(1) dan D(1).
 
-# 9. Wumpus World Game
+# 8. Wumpus World Game
