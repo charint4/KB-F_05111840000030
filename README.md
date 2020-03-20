@@ -9,6 +9,95 @@ Institut Teknologi Sepuluh Nopember Surabaya
 # 1. 8 Queen - Hill Climbing
 Source Code : [8queen-hill-climbing.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20queen%20-%20hill%20climbing/n-queen.cpp)
 
+Hill Climbing adalah pencarian heuristik yang digunakan untuk masalah optimasi matematis di bidang Inteligensi Buatan.
+
+Dengan sejumlah besar input dan fungsi heuristik yang baik, ia mencoba untuk menemukan solusi yang cukup baik untuk masalah tersebut. Solusi ini mungkin bukan global optimal maksimum.
+- Dalam definisi di atas, `Mathematical Optimization Problems` menyiratkan bahwa mendaki bukit memecahkan masalah di mana kita perlu memaksimalkan atau meminimalkan fungsi nyata yang diberikan dengan memilih nilai dari input yang diberikan. Contoh-Traveling salesman masalah di mana kita perlu meminimalkan jarak yang ditempuh oleh salesman.
+- `Heuristic Search` berarti bahwa algoritma pencarian ini mungkin tidak menemukan solusi optimal untuk masalah tersebut. Namun, itu akan memberikan solusi yang baik dalam waktu yang wajar.
+- `Heuristic Function` adalah fungsi yang akan memberi peringkat semua alternatif yang mungkin pada setiap langkah percabangan dalam algoritma pencarian berdasarkan informasi yang tersedia. Ini membantu algoritma untuk memilih rute terbaik dari rute yang mungkin.
+
+## Fitur Hill Climbing
+### 1. Varian dari menghasilkan dan menguji algoritma
+
+Ini adalah varian dari algoritma generate and test. Algoritma generate and test adalah sebagai berikut:
+- Hasilkan solusi yang mungkin.
+- Tes untuk melihat apakah ini solusi yang diharapkan.
+- Jika solusinya telah ditemukan, keluar lagi, lanjutkan ke langkah 1.
+
+Oleh karena itu kami menyebut Hill climbing sebagai varian dari algoritma hasil dan uji karena mengambil umpan balik dari prosedur pengujian. Kemudian umpan balik ini digunakan oleh generator dalam memutuskan langkah selanjutnya dalam ruang pencarian.
+
+### 2. Menggunakan Greedy Aproach
+
+Pada titik mana pun di ruang keadaan, pencarian bergerak ke arah itu saja yang mengoptimalkan biaya fungsi dengan harapan menemukan solusi optimal di akhir.
+
+## Jenis Hill Climbing
+### 1. Simple Hill climbing
+
+Ini memeriksa node tetangga satu per satu dan memilih node tetangga pertama yang mengoptimalkan biaya saat ini sebagai node berikutnya. Ini memeriksa node tetangga satu per satu dan memilih node tetangga pertama yang mengoptimalkan biaya saat ini sebagai node berikutnya.
+
+Algoritma Simple Hill climbing :
+- Evaluasi keadaan awal. Jika itu adalah keadaan tujuan maka berhentilah dan kembalikan kesuksesan. Kalau tidak, jadikan kondisi awal sebagai kondisi saat ini.
+- Loop sampai keadaan solusi ditemukan atau tidak ada operator baru yang dapat diterapkan ke keadaan saat ini.
+-- Pilih state yang belum diterapkan ke negara saat ini dan terapkan untuk menghasilkan negara baru.
+-- Lakukan ini untuk mengevaluasi keadaan baru
+--- Jika keadaan saat ini adalah keadaan tujuan, maka berhentilah dan kembalikan kesuksesan.
+--- Jika lebih baik daripada kondisi saat ini, maka jadikan keadaan saat ini dan lanjutkan.
+--- Jika tidak lebih baik dari kondisi saat ini, maka lanjutkan dalam loop sampai solusi ditemukan.
+- Exit
+
+### 2. Steepest-Ascent Hill climbing
+
+Pertama-tama memeriksa semua node tetangga dan kemudian memilih simpul yang paling dekat dengan keadaan solusi pada simpul berikutnya.
+
+- Evaluasi keadaan awal. Jika status tujuan maka keluar dari yang lain jadikan status saat ini sebagai keadaan awal
+- Ulangi langkah ini sampai solusi ditemukan atau keadaan saat ini tidak berubah
+-- Biarkan ‘target’ menjadi negara sedemikian sehingga setiap penerus dari kondisi saat ini akan lebih baik daripada itu
+-- untuk setiap operator yang berlaku untuk kondisi saat ini
+--- terapkan operator baru dan buat status baru
+--- mengevaluasi keadaan baru
+--- jika keadaan ini adalah keadaan sasaran, maka berhentilah dari yang lain, bandingkan dengan 'target'
+--- jika keadaan ini lebih baik dari ‘target’, tetapkan status ini sebagai ‘target’
+--- jika target lebih baik dari kondisi saat ini, atur status saat ini ke Target
+- Exit
+
+### 3. Stochastic hill climbing
+
+Itu tidak memeriksa semua node tetangga sebelum memutuskan node mana yang akan dipilih. Itu hanya memilih node tetangga secara acak dan memutuskan (berdasarkan jumlah peningkatan tetangga itu) apakah akan pindah ke tetangga itu atau untuk memeriksa yang lain.
+
+## State Space Diagram untuk Hill Climbing
+
+adalah representasi grafis dari himpunan status yang dapat dicapai oleh algoritma pencarian kami vs nilai fungsi objektif kami (fungsi yang ingin kami maksimalkan).
+
+`X - axis` menunjukkan ruang keadaan yaitu keadaan atau konfigurasi yang dapat dicapai algoritma kami.
+`Y - axis` menunjukkan nilai-nilai fungsi obyektif yang sesuai dengan keadaan tertentu.
+
+Solusi terbaik adalah ruang negara di mana fungsi objektif memiliki nilai maksimum (global maksimum).
+
+![8phc](https://user-images.githubusercontent.com/52326074/77142942-355a7680-6ab4-11ea-8c1d-66b86aaef6c9.png)
+
+## Daerah berbeda di State Space Diagram
+
+- `Local Maximum` Ini adalah state yang lebih baik daripada state tetangganya namun ada state yang lebih baik daripada itu (global maksimum). Keadaan ini lebih baik karena di sini nilai fungsi objektif lebih tinggi daripada tetangganya.
+- `Global Maximum` Ini adalah keadaan terbaik yang mungkin dalam diagram ruang keadaan. Ini karena pada keadaan ini, fungsi objektif memiliki nilai tertinggi.
+- `Plateua/Flat Local Maximum` Ini adalah wilayah datar ruang negara di mana negara-negara tetangga memiliki nilai yang sama.
+- `Ridge` Ini adalah wilayah yang lebih tinggi dari tetangganya tetapi memiliki kemiringan. Ini adalah jenis khusus maksimum lokal.
+- `Current State` Wilayah diagram ruang keadaan tempat kami saat ini hadir selama pencarian.
+- `Shoulder` Ini adalah dataran tinggi yang memiliki tepi menanjak.
+
+## Permasalahan di Berbagai Daerah di Hill Climbing
+
+- `Local Maximum` Maksimal lokal semua state tetangga memiliki nilai yang lebih buruk daripada keadaan saat ini. Karena Hill Climbing menggunakan pendekatan serakah, itu tidak akan bergerak ke keadaan yang lebih buruk dan mengakhiri dirinya sendiri. Proses ini akan berakhir meskipun mungkin ada solusi yang lebih baik.  
+
+`To Overcome Local Maximum Problem` Gunakan teknik backtracking. Menyimpan daftar negara yang dikunjungi. Jika pencarian mencapai kondisi yang tidak diinginkan, pencarian dapat mundur ke konfigurasi sebelumnya dan menjelajahi jalur baru.
+
+- `Plateau` Di plateau semua tetangga memiliki nilai yang sama. Oleh karena itu, tidak mungkin untuk memilih arah terbaik.
+
+`To Overcome Plateaus` Lakukan lompatan besar. Pilih negara yang secara acak jauh dari keadaan saat ini. Kemungkinannya adalah bahwa kita akan mendarat di wilayah non-dataran tinggi
+
+- `Ridges` Setiap titik di punggung bukit dapat terlihat seperti puncak karena gerakan ke semua arah yang mungkin terjadi adalah ke bawah. Karenanya algoritma berhenti ketika mencapai kondisi ini.
+
+`To Overcome Ridge` Dalam hambatan semacam ini, gunakan dua aturan atau lebih sebelum pengujian. Itu berarti bergerak ke beberapa arah sekaligus.
+
 # 2. 4 Queen - CSP (Constraint Satisfaction Problems)
 Source Code : [4queen-csp.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/4%20queen%20csp/n-queen_csp.cpp)
 
