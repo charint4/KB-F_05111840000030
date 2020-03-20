@@ -9,6 +9,54 @@ Institut Teknologi Sepuluh Nopember Surabaya
 # 1. 8 Queen - Hill Climbing
 Source Code : [8queen-hill-climbing.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20queen%20-%20hill%20climbing/n-queen.cpp)
 
+Dalam program, bagian untuk mengecek apakah sebuah queen bisa diserang oleh queen lain bisa dilihat pada program dibawah ini.
+```
+int is_attack(int i,int j) {
+    int k,l;
+    //checking if there is a queen in row or column
+    for(k=0;k<N;k++) {
+        if((board[i][k] == 1) || (board[k][j] == 1))
+            return 1;
+    }
+    //checking for diagonals
+    for(k=0;k<N;k++) {
+        for(l=0;l<N;l++) {
+            if(((k+l) == (i+j)) || ((k-l) == (i-j))) {
+                if(board[k][l] == 1)
+                    return 1;
+            }
+        }
+    }
+    return 0;
+}
+```
+
+Kemudian, setelah dirasa tidak ada queen yang menyerang, maka program dibawah ini merupakan bagian untuk meletakkan queen yang dirasa aman.
+```
+int N_queen(int n) {
+    int i,j;
+    //if n is 0, solution found
+    if(n==0)
+        return 1;
+    for(i=0;i<N;i++) {
+        for(j=0;j<N;j++) {
+            //checking if we can place a queen here or not
+            //queen will not be placed if the place is being attacked
+            //or already occupied
+            if((!is_attack(i,j)) && (board[i][j]!=1)) {
+                board[i][j] = 1;
+                //recursion wether we can put the next queen with this arrangment or not
+                if(N_queen(n-1)==1) {
+                    return 1;
+                }
+                board[i][j] = 0;
+            }
+        }
+    }
+    return 0;
+}
+```
+
 Hill Climbing adalah pencarian heuristik yang digunakan untuk masalah optimasi matematis di bidang Inteligensi Buatan.
 
 Dengan sejumlah besar input dan fungsi heuristik yang baik, ia mencoba untuk menemukan solusi yang cukup baik untuk masalah tersebut. Solusi ini mungkin bukan global optimal maksimum.
@@ -231,6 +279,7 @@ Dari keadaan permainan dimulai, graph minimax untuk Two-Ply Search dapat digamba
 ![tictactoe.5](https://user-images.githubusercontent.com/52326074/77034975-efcb7a00-69dd-11ea-97ae-2ff5b0943d04.JPG)
 
 Nilai node E sampai P didapat dari utility function yang telah didefinisikan sebelumnya sehingga didapatkan :
+```
 E = 6 – 5 = 1
 F = 5 – 5 = 0
 G = 6 – 5 = 1
@@ -243,17 +292,20 @@ M = 5 – 5 = 0
 N = 5 – 6 = -1
 O = 6 – 6 = 0
 P = 4 – 6 = -2
+```
 
 Ada sembilan langkah yang mungkin dilakukan oleh pemain pertama karena kotak kosongnya berjumlah 9, tapi pada diagram diatas hanya diambil 3 kemungkinan (node B,C dan D), karena 6 kemungkinan lainnya setara dengan ke-3 komposisi di atas, misalnya :
 
 ![tictactoe.6](https://user-images.githubusercontent.com/52326074/77035007-083b9480-69de-11ea-9932-0b194195291b.JPG)
 
 Dari node B seharusnya didapatkan node anak sebanyak 8 node, dengan mengabaikan node yang setara node anak dari B menjadi E, F, G, H dan I. Dengan cara yang sama didapatkan node anak dari C yaitu J dan K, sedangkan node anak dari D yaitu L, M, N, O dan P.
+
 Karena hanya menggunakan Two-Ply Search, node-node anak dari B, C dan D dicari nilainya, kemudian dicari yang terkecil (min) masing-masing untuk dijadikan nilai B, C dan D. Selanjutnya dicari nilai terbesar (max) dari ketiga nilai tersebut untuk menentukan langkah pemain pertama.
 
 Pada diagram yang digambarkan diatas, node anak dari B bernilai masing-masing E=1, F=0, G=1, H=0 dan I=-1 jadi nilai B diambil yang terkecil yaitu –1.
 
 Node anak dari C bernilai masing-masing J=1 dan K=2 jadi nilai C diambil yang terkecil yaitu 1. Kemudian node anak dari D bernilai masing-masing L=-1, M=0, N=-1, O=0 dan P=-2 jadi nilai C diambil yang terkecil yaitu –2.
+
 Selanjutnya dari nilai node B=-1, C=1, dan D=-2 diambil nilai terbesar yaitu C=1, yang berarti langkah terbaik yang harus dilakukan oleh pemain pertama adalah node C.
 
 Setelah pemain kedua menempatkan buahnya, keadaan saat itu dijadikan initial state dan dilakukan kembali pelacakan dengan langkah yang telah dijelaskan di atas. Contoh : Misalkan pemain kedua meletakkan buahnya seperti gambar berikut :
