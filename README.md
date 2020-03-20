@@ -31,36 +31,50 @@ Oleh karena itu kami menyebut Hill climbing sebagai varian dari algoritma hasil 
 Pada titik mana pun di ruang keadaan, pencarian bergerak ke arah itu saja yang mengoptimalkan biaya fungsi dengan harapan menemukan solusi optimal di akhir.
 
 ## Jenis Hill Climbing
-### 1. Simple Hill climbing
+### 1. Simple Hill Climbing
 
 Ini memeriksa node tetangga satu per satu dan memilih node tetangga pertama yang mengoptimalkan biaya saat ini sebagai node berikutnya. Ini memeriksa node tetangga satu per satu dan memilih node tetangga pertama yang mengoptimalkan biaya saat ini sebagai node berikutnya.
 
 Algoritma Simple Hill climbing :
 - Evaluasi keadaan awal. Jika itu adalah keadaan tujuan maka berhentilah dan kembalikan kesuksesan. Kalau tidak, jadikan kondisi awal sebagai kondisi saat ini.
 - Loop sampai keadaan solusi ditemukan atau tidak ada operator baru yang dapat diterapkan ke keadaan saat ini.
--- Pilih state yang belum diterapkan ke negara saat ini dan terapkan untuk menghasilkan negara baru.
+
+-- Pilih state yang belum diterapkan ke state saat ini dan terapkan untuk menghasilkan negara baru.
+
 -- Lakukan ini untuk mengevaluasi keadaan baru
+
 --- Jika keadaan saat ini adalah keadaan tujuan, maka berhentilah dan kembalikan kesuksesan.
+
 --- Jika lebih baik daripada kondisi saat ini, maka jadikan keadaan saat ini dan lanjutkan.
+
 --- Jika tidak lebih baik dari kondisi saat ini, maka lanjutkan dalam loop sampai solusi ditemukan.
+
 - Exit
 
-### 2. Steepest-Ascent Hill climbing
+### 2. Steepest-Ascent Hill Climbing
 
 Pertama-tama memeriksa semua node tetangga dan kemudian memilih simpul yang paling dekat dengan keadaan solusi pada simpul berikutnya.
 
 - Evaluasi keadaan awal. Jika status tujuan maka keluar dari yang lain jadikan status saat ini sebagai keadaan awal
 - Ulangi langkah ini sampai solusi ditemukan atau keadaan saat ini tidak berubah
+
 -- Biarkan ‘target’ menjadi negara sedemikian sehingga setiap penerus dari kondisi saat ini akan lebih baik daripada itu
+
 -- untuk setiap operator yang berlaku untuk kondisi saat ini
+
 --- terapkan operator baru dan buat status baru
+
 --- mengevaluasi keadaan baru
+
 --- jika keadaan ini adalah keadaan sasaran, maka berhentilah dari yang lain, bandingkan dengan 'target'
+
 --- jika keadaan ini lebih baik dari ‘target’, tetapkan status ini sebagai ‘target’
+
 --- jika target lebih baik dari kondisi saat ini, atur status saat ini ke Target
+
 - Exit
 
-### 3. Stochastic hill climbing
+### 3. Stochastic Hill Climbing
 
 Itu tidak memeriksa semua node tetangga sebelum memutuskan node mana yang akan dipilih. Itu hanya memilih node tetangga secara acak dan memutuskan (berdasarkan jumlah peningkatan tetangga itu) apakah akan pindah ke tetangga itu atau untuk memeriksa yang lain.
 
