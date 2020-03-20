@@ -149,16 +149,8 @@ Source Code : [8puzzle.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/b
 
 8-puzzle adalah puzzle yang ditemukan dan dipopulerkan oleh Noyes Palmer Chapman pada tahun 1870-an. Ini dimainkan pada kotak 3-oleh-3 dengan 8 blok persegi berlabel 1 hingga 8 dan kotak kosong. Tujuan Anda adalah mengatur ulang blok agar sesuai. Anda diizinkan untuk menggeser blok secara horizontal atau vertikal ke dalam kotak kosong. Berikut ini menunjukkan urutan langkah hukum dari posisi dewan awal (kiri) ke posisi tujuan (kanan).
 
-    1  3        1     3        1  2  3        1  2  3        1  2  3
- 4  2  5   =>   4  2  5   =>   4     5   =>   4  5      =>   4  5  6
- 7  8  6        7  8  6        7  8  6        7  8  6        7  8 
-
- initial                                                      goal
-
 # 4. 8 Puzzle - BFS (Breadth First Search)
 Source Code : [8puzzle-bfs.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20puzzle%20bfs/8-puzzle_bfs.cpp)
-
-![8pbfs](https://user-images.githubusercontent.com/52326074/77151803-54173800-6ac9-11ea-9df5-9e98d4f335b8.jpg)
 
 Solusi algoritmik untuk masalah yang menggambarkan metodologi kecerdasan buatan umum yang dikenal sebagai algoritma pencarian A*. Kami menetapkan kondisi permainan sebagai posisi papan, jumlah gerakan yang dilakukan untuk mencapai posisi papan, dan kondisi sebelumnya.
 
@@ -166,16 +158,6 @@ Pertama, masukkan status awal (papan awal, 0 bergerak, dan status nol sebelumnya
 
 - `Hamming Priority Function` Jumlah blok di posisi yang salah, ditambah jumlah gerakan yang dilakukan sejauh ini untuk sampai ke negara bagian. Secara intuitif, keadaan dengan sejumlah kecil blok di posisi yang salah dekat dengan keadaan sasaran, dan kami lebih suka keadaan yang telah dicapai menggunakan sejumlah kecil gerakan.
 - `Manhattan Priority Function` Jumlah jarak (jumlah jarak vertikal dan horizontal) dari blok ke posisi tujuan mereka, ditambah jumlah gerakan yang dibuat sejauh ini untuk sampai ke state.
-
- 8  1  3        1  2  3     1  2  3  4  5  6  7  8    1  2  3  4  5  6  7  8
- 4     2        4  5  6     ----------------------    ----------------------
- 7  6  5        7  8        1  1  0  0  1  1  0  1    1  2  0  0  2  2  0  3
-
- initial          goal         Hamming = 5 + 0          Manhattan = 10 + 0
- 
-Dibuat penghalang utama: untuk memecahkan teka-teki dari keadaan tertentu pada antrian prioritas, jumlah total langkah yang perlu kita buat (termasuk yang sudah dibuat) setidaknya menjadi prioritasnya, menggunakan fungsi prioritas Hamming atau Manhattan. (Untuk prioritas Hamming, ini benar karena setiap blok yang tidak pada tempatnya harus bergerak setidaknya satu kali untuk mencapai posisi tujuannya. Untuk prioritas Manhattan, ini benar karena setiap blok harus memindahkan jarak Manhattan dari posisi tujuan. Perhatikan bahwa kami jangan hitung ubin kosong saat menghitung prioritas Hamming atau Manhattan.)
-
-Konsekuensinya, segera setelah mengeluarkan status, tidak hanya menemukan urutan gerakan dari papan awal ke papan yang terkait dengan negara, tetapi juga yang membuat jumlah gerakan paling sedikit.
 
 # 5. 8 Puzzle - DFS (Depth First Search)
 
