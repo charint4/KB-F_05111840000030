@@ -77,7 +77,7 @@ Solusi terbaik adalah ruang negara di mana fungsi objektif memiliki nilai maksim
 
 ## Permasalahan di Berbagai Daerah di Hill Climbing
 
-- `Local Maximum` Maksimal lokal semua state tetangga memiliki nilai yang lebih buruk daripada keadaan saat ini. Karena Hill Climbing menggunakan pendekatan serakah, itu tidak akan bergerak ke keadaan yang lebih buruk dan mengakhiri dirinya sendiri. Proses ini akan berakhir meskipun mungkin ada solusi yang lebih baik.  
+- `Local Maximum` semua state tetangga memiliki nilai yang lebih buruk daripada keadaan saat ini. Karena Hill Climbing menggunakan pendekatan serakah, itu tidak akan bergerak ke keadaan yang lebih buruk dan mengakhiri dirinya sendiri. Proses ini akan berakhir meskipun mungkin ada solusi yang lebih baik.  
 
 `To Overcome Local Maximum Problem` Gunakan teknik backtracking. Menyimpan daftar negara yang dikunjungi. Jika pencarian mencapai kondisi yang tidak diinginkan, pencarian dapat mundur ke konfigurasi sebelumnya dan menjelajahi jalur baru.
 
@@ -114,7 +114,7 @@ Kendala ketiga dilarang ratu di baris yang sama:
 
 ![4qcsp2](https://user-images.githubusercontent.com/52326074/77139793-f9221880-6aa9-11ea-8247-01dbe0430e0d.png)
 
-Kendala diperbanyak, kami dapat menguji hipotesis lain, dan menempatkan ratu kedua di salah satu kotak yang tersisa. Pemecahannya mungkin memutuskan untuk menempatkan di dalamnya kotak pertama yang tersedia di kolom kedua:
+Kendala diperbanyak, dapat diuji hipotesis lain, dan menempatkan ratu kedua di salah satu kotak yang tersisa. Pemecahannya mungkin memutuskan untuk menempatkan di dalamnya kotak pertama yang tersedia di kolom kedua:
 
 ![4qcsp3](https://user-images.githubusercontent.com/52326074/77139794-f9221880-6aa9-11ea-90f0-64b47585851f.png)
 
@@ -145,8 +145,37 @@ Dapat dilihat bahwa sudah ditemukan solusi pertama! Jika ingin menginstruksikan 
 # 3. 8 Puzzle
 Source Code : [8puzzle.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20puzzle/8-puzzle.cpp)
 
+![8p](https://user-images.githubusercontent.com/52326074/77151801-52e60b00-6ac9-11ea-84f6-e27a66305731.png)
+
+8-puzzle adalah puzzle yang ditemukan dan dipopulerkan oleh Noyes Palmer Chapman pada tahun 1870-an. Ini dimainkan pada kotak 3-oleh-3 dengan 8 blok persegi berlabel 1 hingga 8 dan kotak kosong. Tujuan Anda adalah mengatur ulang blok agar sesuai. Anda diizinkan untuk menggeser blok secara horizontal atau vertikal ke dalam kotak kosong. Berikut ini menunjukkan urutan langkah hukum dari posisi dewan awal (kiri) ke posisi tujuan (kanan).
+
+    1  3        1     3        1  2  3        1  2  3        1  2  3
+ 4  2  5   =>   4  2  5   =>   4     5   =>   4  5      =>   4  5  6
+ 7  8  6        7  8  6        7  8  6        7  8  6        7  8 
+
+ initial                                                      goal
+
 # 4. 8 Puzzle - BFS (Breadth First Search)
 Source Code : [8puzzle-bfs.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20puzzle%20bfs/8-puzzle_bfs.cpp)
+
+![8pbfs](https://user-images.githubusercontent.com/52326074/77151803-54173800-6ac9-11ea-9df5-9e98d4f335b8.jpg)
+
+Solusi algoritmik untuk masalah yang menggambarkan metodologi kecerdasan buatan umum yang dikenal sebagai algoritma pencarian A*. Kami menetapkan kondisi permainan sebagai posisi papan, jumlah gerakan yang dilakukan untuk mencapai posisi papan, dan kondisi sebelumnya.
+
+Pertama, masukkan status awal (papan awal, 0 bergerak, dan status nol sebelumnya) ke dalam antrian prioritas. Kemudian, hapus dari antrian prioritas negara dengan prioritas minimum, dan masukkan ke antrian prioritas semua state tetangga (yang dapat dicapai dalam satu gerakan). Ulangi prosedur ini sampai keadaan keluar adalah keadaan tujuan. Keberhasilan pendekatan ini bergantung pada pemilihan fungsi prioritas untuk suatu state. Dipertimbangkan dua fungsi prioritas:
+
+- `Hamming Priority Function` Jumlah blok di posisi yang salah, ditambah jumlah gerakan yang dilakukan sejauh ini untuk sampai ke negara bagian. Secara intuitif, keadaan dengan sejumlah kecil blok di posisi yang salah dekat dengan keadaan sasaran, dan kami lebih suka keadaan yang telah dicapai menggunakan sejumlah kecil gerakan.
+- `Manhattan Priority Function` Jumlah jarak (jumlah jarak vertikal dan horizontal) dari blok ke posisi tujuan mereka, ditambah jumlah gerakan yang dibuat sejauh ini untuk sampai ke state.
+
+ 8  1  3        1  2  3     1  2  3  4  5  6  7  8    1  2  3  4  5  6  7  8
+ 4     2        4  5  6     ----------------------    ----------------------
+ 7  6  5        7  8        1  1  0  0  1  1  0  1    1  2  0  0  2  2  0  3
+
+ initial          goal         Hamming = 5 + 0          Manhattan = 10 + 0
+ 
+Dibuat penghalang utama: untuk memecahkan teka-teki dari keadaan tertentu pada antrian prioritas, jumlah total langkah yang perlu kita buat (termasuk yang sudah dibuat) setidaknya menjadi prioritasnya, menggunakan fungsi prioritas Hamming atau Manhattan. (Untuk prioritas Hamming, ini benar karena setiap blok yang tidak pada tempatnya harus bergerak setidaknya satu kali untuk mencapai posisi tujuannya. Untuk prioritas Manhattan, ini benar karena setiap blok harus memindahkan jarak Manhattan dari posisi tujuan. Perhatikan bahwa kami jangan hitung ubin kosong saat menghitung prioritas Hamming atau Manhattan.)
+
+Konsekuensinya, segera setelah mengeluarkan status, tidak hanya menemukan urutan gerakan dari papan awal ke papan yang terkait dengan negara, tetapi juga yang membuat jumlah gerakan paling sedikit.
 
 # 5. 8 Puzzle - DFS (Depth First Search)
 
