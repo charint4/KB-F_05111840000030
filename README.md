@@ -16,6 +16,8 @@ Dengan sejumlah besar input dan fungsi heuristik yang baik, ia mencoba untuk men
 - `Heuristic Search` berarti bahwa algoritma pencarian ini mungkin tidak menemukan solusi optimal untuk masalah tersebut. Namun, itu akan memberikan solusi yang baik dalam waktu yang wajar.
 - `Heuristic Function` adalah fungsi yang akan memberi peringkat semua alternatif yang mungkin pada setiap langkah percabangan dalam algoritma pencarian berdasarkan informasi yang tersedia. Ini membantu algoritma untuk memilih rute terbaik dari rute yang mungkin.
 
+![hc](https://user-images.githubusercontent.com/52326074/77150635-e36f1c00-6ac6-11ea-977e-153dd3b862e3.png)
+
 ## Fitur Hill Climbing
 ### 1. Varian dari menghasilkan dan menguji algoritma
 
@@ -38,17 +40,6 @@ Ini memeriksa node tetangga satu per satu dan memilih node tetangga pertama yang
 Algoritma Simple Hill climbing :
 - Evaluasi keadaan awal. Jika itu adalah keadaan tujuan maka berhentilah dan kembalikan kesuksesan. Kalau tidak, jadikan kondisi awal sebagai kondisi saat ini.
 - Loop sampai keadaan solusi ditemukan atau tidak ada operator baru yang dapat diterapkan ke keadaan saat ini.
-
--- Pilih state yang belum diterapkan ke state saat ini dan terapkan untuk menghasilkan negara baru.
-
--- Lakukan ini untuk mengevaluasi keadaan baru
-
---- Jika keadaan saat ini adalah keadaan tujuan, maka berhentilah dan kembalikan kesuksesan.
-
---- Jika lebih baik daripada kondisi saat ini, maka jadikan keadaan saat ini dan lanjutkan.
-
---- Jika tidak lebih baik dari kondisi saat ini, maka lanjutkan dalam loop sampai solusi ditemukan.
-
 - Exit
 
 ### 2. Steepest-Ascent Hill Climbing
@@ -57,21 +48,6 @@ Pertama-tama memeriksa semua node tetangga dan kemudian memilih simpul yang pali
 
 - Evaluasi keadaan awal. Jika status tujuan maka keluar dari yang lain jadikan status saat ini sebagai keadaan awal
 - Ulangi langkah ini sampai solusi ditemukan atau keadaan saat ini tidak berubah
-
--- Biarkan ‘target’ menjadi negara sedemikian sehingga setiap penerus dari kondisi saat ini akan lebih baik daripada itu
-
--- untuk setiap operator yang berlaku untuk kondisi saat ini
-
---- terapkan operator baru dan buat status baru
-
---- mengevaluasi keadaan baru
-
---- jika keadaan ini adalah keadaan sasaran, maka berhentilah dari yang lain, bandingkan dengan 'target'
-
---- jika keadaan ini lebih baik dari ‘target’, tetapkan status ini sebagai ‘target’
-
---- jika target lebih baik dari kondisi saat ini, atur status saat ini ke Target
-
 - Exit
 
 ### 3. Stochastic Hill Climbing
@@ -83,6 +59,7 @@ Itu tidak memeriksa semua node tetangga sebelum memutuskan node mana yang akan d
 adalah representasi grafis dari himpunan status yang dapat dicapai oleh algoritma pencarian kami vs nilai fungsi objektif kami (fungsi yang ingin kami maksimalkan).
 
 `X - axis` menunjukkan ruang keadaan yaitu keadaan atau konfigurasi yang dapat dicapai algoritma kami.
+
 `Y - axis` menunjukkan nilai-nilai fungsi obyektif yang sesuai dengan keadaan tertentu.
 
 Solusi terbaik adalah ruang negara di mana fungsi objektif memiliki nilai maksimum (global maksimum).
