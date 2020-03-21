@@ -248,7 +248,7 @@ BFS `(Breadth First Search)` adalah strategi sederhana di mana simpul akar diper
 
 Breadth First Search Menggunakan struktur data antrian sebagai lawan dari stack yang digunakan Depth First Search.
 
-`BFS` menggunakan struktur data antrian yang merupakan struktur data `First in, First Out` atau FIFO. Antrian ini menyimpan semua node yang harus kita jelajahi dan setiap kali sebuah node dieksplorasi ditambahkan ke set node yang dikunjungi.
+BFS menggunakan struktur data antrian yang merupakan struktur data `First In, First Out` atau FIFO. Antrian ini menyimpan semua node yang harus kita jelajahi dan setiap kali sebuah node dieksplorasi ditambahkan ke set node yang dikunjungi.
 
 Jika dilakukan pencarian luas pertama di pohon biner di atas maka itu akan melakukan hal berikut:
 - Tetapkan Node 1 sebagai Node awal
@@ -280,6 +280,20 @@ Sifat rekursif DFS ini dapat diimplementasikan menggunakan tumpukan. Ide dasarny
 ![dfs](https://user-images.githubusercontent.com/52326074/77224296-cace3700-6b96-11ea-9dc1-810524ec907a.jpg)
 
 # 5. 8 Puzzle - IDS (Iterative Deepening Search)
+
+`Iterative Deepening Search` (IDS) merupakan sebuah strategi umum yang biasanya dikombinasikan dengan Depth First tree search, yang akan menemukan berapa depth limit terbaik untuk digunakan. Hal ini dilakukan dengan secara menambah limit secara bertahap, mulai dari 0,1, 2, dan seterusnya sampai goal sudah ditemukan.
+
+![ids](https://user-images.githubusercontent.com/52326074/77225601-0cfd7580-6ba3-11ea-8c43-cd68358ada77.png)
+
+Iterative Deepening DFS dengan kata-kata sederhana menjalankan DFS dengan secara bertahap meningkatkan batas kedalaman - 0, kemudian mengulangi DFS dari awal dengan batas kedalaman 1, kemudian mengulangi DFS dari awal dengan tingkat kedalaman 2, dan seterusnya, hingga solusi ditemukan . Jadi bagaimana ini menggabungkan manfaat DFS dan BFS?
+
+Ini memiliki persyaratan memori sederhana seperti DFS yaitu O (bm)
+
+Sejak menjalankan DFS (meskipun dengan meningkatkan level kedalaman dengan setiap iterasi), persyaratan memorinya akan sama dengan DFS.
+
+Ini optimal asalkan biaya jalur adalah fungsi nececreasing dari kedalaman node, seperti BFS. Karena Anda mengulangi strategi DFS dengan meningkatkan batas kedalaman dengan setiap iterasi, Anda dapat yakin bahwa Anda melintasi saudara kandung leluhur Anda dalam iterasi sebelumnya yang pada gilirannya menjamin bahwa tidak ada keadaan solusi yang ada pada level yang lebih dangkal.
+
+Lengkap seperti BFS asalkan faktor percabangannya terbatas. Karena itu melintasi lebar juga - karena Anda mengulangi DFS dengan tingkat kedalaman yang meningkat - itu tidak bisa terjebak pada jalur yang tak terbatas.
 
 # 6. 8 Puzzle - Heuristic
 Source Code : [8puzzle-heuristic.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20puzzle%20heuristic/8-puzzle-heuristic.cpp)
