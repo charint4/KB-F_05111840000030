@@ -67,7 +67,7 @@ Dengan sejumlah besar input dan fungsi heuristik yang baik, ia mencoba untuk men
 ![hc](https://user-images.githubusercontent.com/52326074/77150635-e36f1c00-6ac6-11ea-977e-153dd3b862e3.png)
 
 ## Fitur Hill Climbing
-### 1. Varian dari menghasilkan dan menguji algoritma
+### a. Varian dari menghasilkan dan menguji algoritma
 
 Ini adalah varian dari algoritma generate and test. Algoritma generate and test adalah sebagai berikut:
 - Hasilkan solusi yang mungkin.
@@ -76,12 +76,12 @@ Ini adalah varian dari algoritma generate and test. Algoritma generate and test 
 
 Oleh karena itu kami menyebut Hill climbing sebagai varian dari algoritma hasil dan uji karena mengambil umpan balik dari prosedur pengujian. Kemudian umpan balik ini digunakan oleh generator dalam memutuskan langkah selanjutnya dalam ruang pencarian.
 
-### 2. Menggunakan Greedy Aproach
+### b. Menggunakan Greedy Aproach
 
 Pada titik mana pun di ruang keadaan, pencarian bergerak ke arah itu saja yang mengoptimalkan biaya fungsi dengan harapan menemukan solusi optimal di akhir.
 
 ## Jenis Hill Climbing
-### 1. Simple Hill Climbing
+### a. Simple Hill Climbing
 
 Ini memeriksa node tetangga satu per satu dan memilih node tetangga pertama yang mengoptimalkan biaya saat ini sebagai node berikutnya. Ini memeriksa node tetangga satu per satu dan memilih node tetangga pertama yang mengoptimalkan biaya saat ini sebagai node berikutnya.
 
@@ -90,7 +90,7 @@ Algoritma Simple Hill climbing :
 - Loop sampai keadaan solusi ditemukan atau tidak ada operator baru yang dapat diterapkan ke keadaan saat ini.
 - Exit
 
-### 2. Steepest-Ascent Hill Climbing
+### b. Steepest-Ascent Hill Climbing
 
 Pertama-tama memeriksa semua node tetangga dan kemudian memilih simpul yang paling dekat dengan keadaan solusi pada simpul berikutnya.
 
@@ -98,7 +98,7 @@ Pertama-tama memeriksa semua node tetangga dan kemudian memilih simpul yang pali
 - Ulangi langkah ini sampai solusi ditemukan atau keadaan saat ini tidak berubah
 - Exit
 
-### 3. Stochastic Hill Climbing
+### c. Stochastic Hill Climbing
 
 Itu tidak memeriksa semua node tetangga sebelum memutuskan node mana yang akan dipilih. Itu hanya memilih node tetangga secara acak dan memutuskan (berdasarkan jumlah peningkatan tetangga itu) apakah akan pindah ke tetangga itu atau untuk memeriksa yang lain.
 
@@ -139,6 +139,57 @@ Solusi terbaik adalah ruang negara di mana fungsi objektif memiliki nilai maksim
 
 # 2. 4 Queen - CSP (Constraint Satisfaction Problems)
 Source Code : [4queen-csp.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/4%20queen%20csp/n-queen_csp.cpp)
+
+Dalam program dibawah ini, merupakan fungsi untuk mengecek tempat yang akan ditempati oleh queen.
+```
+// Function to check queens placement 
+void nQueens(int k, int n){ 
+	for (int i = 1;i <= n;i++){ 
+		if (canPlace(k, i)){ 
+			arr[k] = i; 
+			if (k == n) 
+				display(n); 
+			else
+				nQueens(k + 1, n); 
+		} 
+	} 
+} 
+
+```
+
+Kemudian, setelah mengecek tempat yang akan ditempati queen, lalu fungsi program dibawah ini mengecek apakah queen aman diletakkan ditempat tersebut.
+```
+// Helper Function to check if queen can be placed 
+bool canPlace(int k, int i){ 
+	for (int j = 1;j <= k - 1;j++){ 
+		if (arr[j] == i || 
+			(abs(arr[j] - i) == abs(j - k))) 
+		return false; 
+	} 
+	return true; 
+} 
+```
+
+Setelah dirasa aman tempat tersebut, fungsi program dibawah ini untuk meletakkan queen pada board.
+```
+// Function to display placed queen 
+void display(int n){ 
+	breakLine 
+	cout << "Arrangement No. " << ++no; 
+	breakLine 
+	for (int i = 1; i <= n; i++){ 
+		for (int j = 1; j <= n; j++){ 
+			if (arr[i] != j) 
+				cout << "    X"; 
+			else
+				cout << "    Q"; 
+		} 
+		cout << endl; 
+	} 
+	breakLine 
+} 
+
+```
 
 ![4qcsp](https://user-images.githubusercontent.com/52326074/77139569-14d8ef00-6aa9-11ea-88c5-8cb7a395e267.png)
 
