@@ -246,13 +246,13 @@ Source Code : [8puzzle-bfs.cpp](https://github.com/daffaaflah6/KB-F_051118400000
 
 BFS `(Breadth First Search)` adalah strategi sederhana di mana simpul akar diperluas terlebih dahulu, kemudian semua penerus simpul akar diperluas selanjutnya, kemudian penerusnya dan seterusnya sampai jalan terbaik yang mungkin telah ditemukan. Karena kenyataan bahwa strategi untuk grafik traversal ini tidak memiliki informasi tambahan tentang status di luar yang disediakan dalam definisi masalah, Breadth First Search digolongkan sebagai pencarian yang kurang informasi atau blind.
 
-Breadth First Search Menggunakan struktur data antrian sebagai lawan dari stack yang digunakan Depth First Search.
+Breadth First Search Menggunakan struktur data `queue` sebagai lawan dari stack yang digunakan Depth First Search.
 
 BFS menggunakan struktur data antrian yang merupakan struktur data `First In, First Out` atau FIFO. Antrian ini menyimpan semua node yang harus kita jelajahi dan setiap kali sebuah node dieksplorasi ditambahkan ke set node yang dikunjungi.
 
 Jika dilakukan pencarian luas pertama di pohon biner di atas maka itu akan melakukan hal berikut:
 - Tetapkan Node 1 sebagai Node awal
-- Tambahkan Node ini ke `Queue`
+- Tambahkan Node ini ke queue
 - Tambahkan Node ini ke set yang dikunjungi
 - Jika node ini adalah node tujuan kami, maka kembalikan benar, kalau tidak tambahkan Node 2 dan Node 3 ke queue
 - Periksa Node 2 dan jika itu tidak menambahkan Node 4 dan Node 5 ke queue
@@ -270,6 +270,8 @@ Seperti yang pada gambardibawah ini, jika mengikuti algoritma ini maka akan seca
 
 Algoritma DFS `Depth First Search` adalah algoritma rekursif yang menggunakan gagasan backtracking. Ini melibatkan pencarian lengkap dari semua node dengan melanjutkan, jika mungkin, dengan mundur.
 
+Depth First Search Menggunakan struktur data `stack` sebagai lawan dari queue yang digunakan Breadth First Search.
+
 Di sini, kata mundur berarti bahwa ketika pencarian bergerak maju dan tidak ada lagi node di sepanjang jalur saat ini, pencarian bergerak mundur di jalur yang sama untuk menemukan node untuk dilintasi. Semua node akan dikunjungi di jalur saat ini sampai semua node yang belum dikunjungi telah dilalui setelah jalur berikutnya akan dipilih.
 
 Sifat rekursif DFS ini dapat diimplementasikan menggunakan tumpukan. Ide dasarnya adalah sebagai berikut:
@@ -283,7 +285,7 @@ Sifat rekursif DFS ini dapat diimplementasikan menggunakan tumpukan. Ide dasarny
 
 `Iterative Deepening Search` (IDS) merupakan sebuah strategi umum yang biasanya dikombinasikan dengan Depth First tree search, yang akan menemukan berapa depth limit terbaik untuk digunakan. Hal ini dilakukan dengan secara menambah limit secara bertahap, mulai dari 0,1, 2, dan seterusnya sampai goal sudah ditemukan.
 
-![ids](https://user-images.githubusercontent.com/52326074/77225601-0cfd7580-6ba3-11ea-8c43-cd68358ada77.png)
+![ids](https://user-images.githubusercontent.com/52326074/77225686-decc6580-6ba3-11ea-9dfc-fa4e0b19219b.jpg)
 
 Iterative Deepening DFS dengan kata-kata sederhana menjalankan DFS dengan secara bertahap meningkatkan batas kedalaman - 0, kemudian mengulangi DFS dari awal dengan batas kedalaman 1, kemudian mengulangi DFS dari awal dengan tingkat kedalaman 2, dan seterusnya, hingga solusi ditemukan . Jadi bagaimana ini menggabungkan manfaat DFS dan BFS?
 
