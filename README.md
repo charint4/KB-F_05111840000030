@@ -268,6 +268,17 @@ Seperti yang pada gambardibawah ini, jika mengikuti algoritma ini maka akan seca
 
 # 4. 8 Puzzle - DFS (Depth First Search)
 
+Algoritma DFS `Depth First Search` adalah algoritma rekursif yang menggunakan gagasan backtracking. Ini melibatkan pencarian lengkap dari semua node dengan melanjutkan, jika mungkin, dengan mundur.
+
+Di sini, kata mundur berarti bahwa ketika pencarian bergerak maju dan tidak ada lagi node di sepanjang jalur saat ini, pencarian bergerak mundur di jalur yang sama untuk menemukan node untuk dilintasi. Semua node akan dikunjungi di jalur saat ini sampai semua node yang belum dikunjungi telah dilalui setelah jalur berikutnya akan dipilih.
+
+Sifat rekursif DFS ini dapat diimplementasikan menggunakan tumpukan. Ide dasarnya adalah sebagai berikut:
+- Pilih simpul awal dan dorong semua simpul yang berdekatan ke tumpukan.
+- Pop sebuah node dari stack untuk memilih node berikutnya untuk mengunjungi dan mendorong semua node yang berdekatan ke dalam stack.
+- Ulangi proses ini sampai tumpukan kosong. Namun, pastikan bahwa node yang dikunjungi ditandai. Ini akan mencegah Anda mengunjungi simpul yang sama lebih dari sekali. Jika Anda tidak menandai node yang dikunjungi dan Anda mengunjungi node yang sama lebih dari sekali, Anda mungkin berakhir dalam loop tak terbatas.
+
+![dfs](https://user-images.githubusercontent.com/52326074/77224296-cace3700-6b96-11ea-9dc1-810524ec907a.jpg)
+
 # 5. 8 Puzzle - IDS (Iterative Deepening Search)
 
 # 6. 8 Puzzle - Heuristic
