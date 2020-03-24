@@ -449,7 +449,7 @@ Source Code : [minimax-tictactoe.cpp](https://github.com/daffaaflah6/KB-F_051118
 
 Dalam permasalahan minimax, selain menentukan nilai min maupun max dalam sekelompok angka, namun juga bisa diaplikasikan dalam penyelesaian tic tac toe game. Pastinya dalam menjalankan permainan ini, dilakukan secara bergiliran untuk meletakkan karakter pada kolom yang disediakan.
 
-Pada bagian dibawah ini untuk mendeteksi pada kolom apakah sudah terisi karakter `X`atau `O` atau bahkan kosong ` `.
+Pada bagian dibawah ini untuk mendeteksi pada kolom apakah sudah terisi karakter `X` atau `O` atau bahkan kosong ` `.
 ```
 char gridChar(int i) {
     switch(i) {
@@ -463,6 +463,7 @@ char gridChar(int i) {
 }
 ```
 
+Untuk bagian dibawah ini, mencetak board tic tac toe.
 ```
 void draw(int b[9]) {
     printf(" %c | %c | %c\n",gridChar(b[0]),gridChar(b[1]),gridChar(b[2]));
@@ -473,6 +474,7 @@ void draw(int b[9]) {
 }
 ```
 
+Kemudian, fungsi program dibawah ini untuk mengecek setelah player melakukan langkah / mengisi karakter pada board itu mencapai kemenangan (sudah terbentuk garis).
 ```
 int win(const int board[9]) {
     //determines if a player has won, returns 0 otherwise.
@@ -488,6 +490,7 @@ int win(const int board[9]) {
 }
 ```
 
+Sedangkan untuk bagian dibawah ini, untuk berjalannya tic tac toe dengan mengecek perpindahan player meletakkan karakter pada board dengan menggunakan metode minimax.
 ```
 int minimax(int board[9], int player) {
     //How is the position like for player (their turn) on board?
@@ -513,6 +516,7 @@ int minimax(int board[9], int player) {
 }
 ```
 
+Bagian dibawah ini untuk lawan / dalam hal ini dibuat computer sebagai lawan untuk berjalan menentukan letak karakter.
 ```
 void computerMove(int board[9]) {
     int move = -1;
@@ -534,6 +538,7 @@ void computerMove(int board[9]) {
 }
 ```
 
+Sedangkan bagian dibawah ini untuk player utama berjalan menentukan letak karakter.
 ```
 void playerMove(int board[9]) {
     int move = 0;
