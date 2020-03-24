@@ -300,7 +300,7 @@ Lengkap seperti BFS asalkan faktor percabangannya terbatas. Karena itu melintasi
 # 6. 8 Puzzle - Heuristic
 Source Code : [8puzzle-heuristic.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20puzzle%20heuristic/8-puzzle-heuristic.cpp)
 
-Dalam program ini dimint untuk menyelesaikan 8 puzzle menggunakan metode heuristic 1 dan 2. Dimana penjelasan heuristic 1 dan 2 ada dibawah. Jika menggunakan heuristic 1 maka yang dilihat yaitu banyaknya grid yang menempati tempat yg salah, tetapi jika menggunakan heuristic 2 maka yang dilihat yaitu total keseluruhan jarak tiap grid yang menempati tempat yang salah terhadap posisi grid yang benar, atau sering disebut dengan manhattan distance.
+Dalam program ini diminta untuk menyelesaikan 8 puzzle menggunakan metode heuristic 1 dan 2. Dimana penjelasan heuristic 1 dan 2 ada dibawah. Jika menggunakan heuristic 1 maka yang dilihat yaitu banyaknya grid yang menempati tempat yg salah, tetapi jika menggunakan heuristic 2 maka yang dilihat yaitu total keseluruhan jarak tiap grid yang menempati tempat yang salah terhadap posisi grid yang benar, atau sering disebut dengan manhattan distance.
 
 Jadi dalam penyelesainnya kita mengeluarkan hasil setiap langkah puzzle dengan melihat penempatan grid yang salah kemudian dicari penempatan grid yang benar untuk mencapai final state yang diinginkan.
 
@@ -446,6 +446,105 @@ Kesimpulannya, dari semua yang telah dipaparkan diatas, penggunaan dari dua fung
 
 # 7. Minimax - Tic Tac Toe
 Source Code : [minimax-tictactoe.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/Minimax%20tictactoe/minimax.cpp)
+
+Dalam permasalahan minimax, selain menentukan nilai min maupun max dalam sekelompok angka, namun juga bisa diaplikasikan dalam penyelesaian tic tac toe game. Pastinya dalam menjalankan permainan ini, dilakukan secara bergiliran untuk meletakkan karakter pada kolom yang disediakan.
+
+Pada bagian dibawah ini untuk mendeteksi pada kolom apakah sudah terisi karakter `X`atau `O` atau bahkan kosong ` `.
+```
+char gridChar(int i) {
+    switch(i) {
+        case -1:
+            return 'X';
+        case 0:
+            return ' ';
+        case 1:
+            return 'O';
+    }
+}
+```
+
+```
+void draw(int b[9]) {
+    printf(" %c | %c | %c\n",gridChar(b[0]),gridChar(b[1]),gridChar(b[2]));
+    printf("---+---+---\n");
+    printf(" %c | %c | %c\n",gridChar(b[3]),gridChar(b[4]),gridChar(b[5]));
+    printf("---+---+---\n");
+    printf(" %c | %c | %c\n",gridChar(b[6]),gridChar(b[7]),gridChar(b[8]));
+}
+```
+
+```
+int win(const int board[9]) {
+    //determines if a player has won, returns 0 otherwise.
+    unsigned wins[8][3] = {{0,1,2},{3,4,5},{6,7,8},{0,3,6},{1,4,7},{2,5,8},{0,4,8},{2,4,6}};
+    int i;
+    for(i = 0; i < 8; ++i) {
+        if(board[wins[i][0]] != 0 &&
+           board[wins[i][0]] == board[wins[i][1]] &&
+           board[wins[i][0]] == board[wins[i][2]])
+            return board[wins[i][2]];
+    }
+    return 0;
+}
+```
+
+```
+int minimax(int board[9], int player) {
+    //How is the position like for player (their turn) on board?
+    int winner = win(board);
+    if(winner != 0) return winner*player;
+
+    int move = -1;
+    int score = -2;//Losing moves are preferred to no move
+    int i;
+    for(i = 0; i < 9; ++i) {//For all moves,
+        if(board[i] == 0) {//If legal,
+            board[i] = player;//Try the move
+            int thisScore = -minimax(board, player*-1);
+            if(thisScore > score) {
+                score = thisScore;
+                move = i;
+            }//Pick the one that's worst for the opponent
+            board[i] = 0;//Reset board after try
+        }
+    }
+    if(move == -1) return 0;
+    return score;
+}
+```
+
+```
+void computerMove(int board[9]) {
+    int move = -1;
+    int score = -2;
+    int i;
+    for(i = 0; i < 9; ++i) {
+        if(board[i] == 0) {
+            board[i] = 1;
+            int tempScore = -minimax(board, -1);
+            board[i] = 0;
+            if(tempScore > score) {
+                score = tempScore;
+                move = i;
+            }
+        }
+    }
+    //returns a score based on minimax tree at a given node.
+    board[move] = 1;
+}
+```
+
+```
+void playerMove(int board[9]) {
+    int move = 0;
+    do {
+        printf("\nInput move ([0..8]): ");
+        scanf("%d", &move);
+        printf("\n");
+    } while (move >= 9 || move < 0 && board[move] == 0);
+    board[move] = -1;
+}
+```
 
 Tic Tac Toe merupakan permainan yang dimainkan oleh 2 pemain dengan menempatkan ‘buah’ yang berlainan untuk tiap pemain pada kotak 3 x 3. Penempatan ‘buah’ dilakukan secara bergantian sehingga salah satu pemain menjadi pemenang atau seluruh kotak terisi oleh ‘buah’. Salah satu pemain dikatakan menang jika dapat menempatkan ‘buah’ berjajar sebanyak 3 buah baik secara horisontal, vertikal atau diagonal.
 
