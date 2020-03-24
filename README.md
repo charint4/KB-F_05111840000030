@@ -267,6 +267,7 @@ Seperti yang pada gambardibawah ini, jika mengikuti algoritma ini maka akan seca
 ![bfs](https://user-images.githubusercontent.com/52326074/77224197-c1909a80-6b95-11ea-92fa-ccdca09a36ac.png)
 
 # 4. 8 Puzzle - DFS (Depth First Search)
+Source Code : [8puzzle-dfs.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20puzzle%20dfs/8-puzzle_dfs.cpp)
 
 Algoritma DFS `Depth First Search` adalah algoritma rekursif yang menggunakan gagasan backtracking. Ini melibatkan pencarian lengkap dari semua node dengan melanjutkan, jika mungkin, dengan mundur.
 
@@ -282,6 +283,7 @@ Sifat rekursif DFS ini dapat diimplementasikan menggunakan tumpukan. Ide dasarny
 ![dfs](https://user-images.githubusercontent.com/52326074/77224296-cace3700-6b96-11ea-9dc1-810524ec907a.jpg)
 
 # 5. 8 Puzzle - IDS (Iterative Deepening Search)
+Source Code : [8puzzle-ids.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20puzzle%20ids/8-puzzle_ids.cpp)
 
 `Iterative Deepening Search` (IDS) merupakan sebuah strategi umum yang biasanya dikombinasikan dengan Depth First tree search, yang akan menemukan berapa depth limit terbaik untuk digunakan. Hal ini dilakukan dengan secara menambah limit secara bertahap, mulai dari 0,1, 2, dan seterusnya sampai goal sudah ditemukan.
 
