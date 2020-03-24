@@ -1,5 +1,3 @@
-// Program to print path from root node to destination node for N*N -1 puzzle algorithm 
-// using Branch and BoundThe solution assumes that instance of puzzle is solvable 
 #include <bits/stdc++.h> 
 #define N 3 
 using namespace std; 
