@@ -312,6 +312,38 @@ Seperti yang pada gambardibawah ini, jika mengikuti algoritma ini maka akan seca
 # 4. 8 Puzzle - DFS (Depth First Search)
 Source Code : [8puzzle-dfs.cpp](https://github.com/daffaaflah6/KB-F_05111840000030/blob/master/8%20puzzle%20dfs/8-puzzle_dfs.cpp)
 
+Dalam program ini, melakukan pencarian state yang benar untuk menyelesaikan 8 puzzle dengan metode `Depth First Search`, dimana dalam pencariannya memungkinkan untuk pencarian degan bergerak mundur, yang diimplementasikan dibawah ini. Maksud dari bergerak mundur ini menginisiasi state yang sudah dilintasi.
+```
+int dfs(int idsdepth){
+		deque<Node> toexpand;
+		
+		if (idsdepth==-1) idsdepth = sizeof(int);
+		
+		toexpand.push_back(*this);
+		while ( !toexpand.empty() ){
+				if (toexpand.back().depth < idsdepth){
+					if ( toexpand.back().s.goal()==1 ){ 
+						if (idsdepth == sizeof(int)) 
+							cout << "------|DFS|------" << endl;
+						cout << "Solution found!" << endl;
+						toexpand.back().print();
+						toexpand.clear();
+						return cost;
+					}
+					else{
+						Node t;
+						t= toexpand.back().copy();
+						toexpand.pop_back();
+						t.expand(&toexpand);
+					}
+				}
+				else return 0;
+		}
+		if ( toexpand.empty() ) cout << endl << "Solution NOT found!" << endl;
+		return 0;
+	}
+```
+
 Algoritma DFS `Depth First Search` adalah algoritma rekursif yang menggunakan gagasan backtracking. Ini melibatkan pencarian lengkap dari semua node dengan melanjutkan, jika mungkin, dengan mundur.
 
 Depth First Search Menggunakan struktur data `stack` sebagai lawan dari queue yang digunakan Breadth First Search.
